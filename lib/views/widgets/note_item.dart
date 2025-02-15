@@ -13,7 +13,7 @@ class NoteItem extends StatelessWidget {
           color: Colors.amber,
         ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 8.0, left: 10),
+          padding: const EdgeInsets.only(top: 16.0, left: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
