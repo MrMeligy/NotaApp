@@ -7,6 +7,7 @@ class NotesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         return NoteItem();
       },
