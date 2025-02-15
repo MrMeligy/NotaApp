@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nota/views/widgets/search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -9,15 +10,7 @@ class CustomAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text("Notes", style: TextStyle(fontSize: 28, color: Colors.white)),
-        Container(
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.2),
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Center(child: Icon(Icons.search, size: 30)),
-        ),
+        SearchIcon(),
       ],
     );
   }
