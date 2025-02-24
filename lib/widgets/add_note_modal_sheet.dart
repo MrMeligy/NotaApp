@@ -24,8 +24,8 @@ class AddNoteModalSheet extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNotaLoading ? true : false,
+            return AbsorbPointer(
+              absorbing: state is AddNotaLoading ? true : false,
               child: SingleChildScrollView(
                 child: const NotaForm(),
               ),

@@ -43,21 +43,26 @@ class _NotaFormState extends State<NotaForm> {
             ],
           ),
           const SizedBox(height: 64),
-          CustomButton(
-            onTap: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-                NotaModel notaModel = NotaModel(
-                  title: title!,
-                  content: note!,
-                  date: DateTime.now().toString(),
-                  color: 1,
-                );
-                BlocProvider.of<AddNotaCubit>(context).addNota(notaModel);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          BlocBuilder<AddNotaCubit, AddNotaState>(
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is AddNotaLoading ? true : false,
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                    NotaModel notaModel = NotaModel(
+                      title: title!,
+                      content: note!,
+                      date: DateTime.now().toString(),
+                      color: 1,
+                    );
+                    BlocProvider.of<AddNotaCubit>(context).addNota(notaModel);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
             },
           ),
           const SizedBox(height: 32),
