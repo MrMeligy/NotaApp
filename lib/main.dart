@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -11,12 +13,12 @@ void main() async {
   Hive.registerAdapter(NotaModelAdapter());
   await Hive.openBox<NotaModel>(kBoxName);
   Bloc.observer = SimpleBlocObserver();
+  log(Hive.box<NotaModel>(kBoxName).length.toString());
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
