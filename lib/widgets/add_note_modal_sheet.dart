@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:nota/cubits/cubit/add_nota_cubit.dart';
 import 'package:nota/widgets/nota_form.dart';
 
@@ -12,7 +11,11 @@ class AddNoteModalSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNotaCubit(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
+        padding: EdgeInsets.only(
+          left: 12,
+          right: 12,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: BlocConsumer<AddNotaCubit, AddNotaState>(
           listener: (context, state) {
             if (state is AddNotaSuccess) {
