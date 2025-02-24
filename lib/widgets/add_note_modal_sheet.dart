@@ -9,29 +9,26 @@ class AddNoteModalSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: BlocConsumer<AddNotaCubit, AddNotaState>(
-          listener: (context, state) {
-            if (state is AddNotaSuccess) {
-              Navigator.pop(context);
-            }
-            if (state is AddNotaFailure) {
-              SnackBar(
-                  content: Text('Failed to add note, ${state.errorMessage}'));
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddNotaLoading ? true : false,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: BlocConsumer<AddNotaCubit, AddNotaState>(
+        listener: (context, state) {
+          if (state is AddNotaSuccess) {
+            Navigator.pop(context);
+          }
+          if (state is AddNotaFailure) {
+            SnackBar(
+                content: Text('Failed to add note, ${state.errorMessage}'));
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddNotaLoading ? true : false,
+            child: SingleChildScrollView(
               child: const NotaForm(),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
