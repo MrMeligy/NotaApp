@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nota/consts.dart';
+import 'package:nota/models/nota_model.dart';
 import 'package:nota/views/home_view.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kBoxName);
+  Hive.registerAdapter(NotaModelAdapter());
   runApp(const MyApp());
 }
 
