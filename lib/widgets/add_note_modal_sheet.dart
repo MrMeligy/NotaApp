@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nota/views/widgets/custom_button.dart';
-import 'package:nota/views/widgets/custom_text_field.dart';
+import 'package:nota/widgets/custom_button.dart';
+import 'package:nota/widgets/custom_text_field.dart';
 
 class AddNoteModalSheet extends StatelessWidget {
   const AddNoteModalSheet({super.key});
