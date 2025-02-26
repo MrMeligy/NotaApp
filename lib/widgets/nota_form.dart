@@ -54,7 +54,7 @@ class _NotaFormState extends State<NotaForm> {
                       title: title!,
                       content: note!,
                       date: DateTime.now().toString(),
-                      color: Colors.blue.toARGB32(),
+                      color: const Color.fromARGB(255, 243, 187, 33).toARGB32(),
                     );
                     BlocProvider.of<AddNotaCubit>(context).addNota(notaModel);
                   } else {
