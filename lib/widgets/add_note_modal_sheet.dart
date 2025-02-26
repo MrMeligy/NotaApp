@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nota/cubits/cubit/add_nota_cubit.dart';
-import 'package:nota/cubits/cubit/notes_cubit_cubit.dart';
 import 'package:nota/widgets/nota_form.dart';
 
 class AddNoteModalSheet extends StatelessWidget {
