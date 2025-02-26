@@ -46,14 +46,16 @@ class NoteItem extends StatelessWidget {
                     ),
                   ),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      nota.delete();
+                    },
                     icon: Icon(Icons.delete, size: 30, color: Colors.black),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 24, bottom: 16),
                   child: Text(
-                    nota.date,
+                    formatTimeAgo(DateTime.parse(nota.date)),
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black.withValues(alpha: 0.5),
@@ -67,4 +69,18 @@ class NoteItem extends StatelessWidget {
       ),
     );
   }
+}
+
+String formatTimeAgo(DateTime date) {
+  final now = DateTime.now();
+  final difference = now.difference(date);
+
+  if (difference.inSeconds < 1) return "now";
+  if (difference.inSeconds < 60) return "${difference.inSeconds}s";
+  if (difference.inMinutes < 60) return "${difference.inMinutes}m";
+  if (difference.inHours < 24) return "${difference.inHours}h";
+  if (difference.inDays < 7) return "${difference.inDays}d";
+  if (difference.inDays < 30) return "${(difference.inDays / 7).floor()}w";
+  if (difference.inDays < 365) return "${(difference.inDays / 30).floor()}m";
+  return "${(difference.inDays / 365).floor()}y";
 }
