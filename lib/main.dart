@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nota/consts.dart';
+import 'package:nota/cubits/cubit/notes_cubit_cubit.dart';
 import 'package:nota/models/nota_model.dart';
 import 'package:nota/simple_bloc_observer.dart';
 import 'package:nota/views/home_view.dart';
@@ -22,10 +23,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
-      home: HomeView(),
+    return BlocProvider(
+      create: (context) => NotesCubitCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        home: HomeView(),
+      ),
     );
   }
 }
